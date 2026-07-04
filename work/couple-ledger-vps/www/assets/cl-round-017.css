@@ -1,0 +1,33 @@
+.cl-r17-refresh-toast {
+  position: fixed;
+  left: 50%;
+  top: calc(env(safe-area-inset-top, 0px) + 18px);
+  z-index: 2147483000;
+  max-width: min(86vw, 360px);
+  padding: 10px 14px;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  border-radius: 999px;
+  background: rgba(240, 253, 244, 0.96);
+  color: #14532d;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.14);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -8px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.cl-r17-refresh-toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (max-width: 430px) {
+  .cl-r17-refresh-toast {
+    top: calc(env(safe-area-inset-top, 0px) + 12px);
+    width: calc(100vw - 32px);
+  }
+}

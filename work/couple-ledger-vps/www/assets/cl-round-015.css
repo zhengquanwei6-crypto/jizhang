@@ -1,0 +1,73 @@
+html,
+body {
+  scroll-behavior: auto;
+  overscroll-behavior-y: auto;
+}
+
+.app-shell,
+.page,
+.cl-r12-quick-entry,
+.cl-r13-repeat,
+.cl-r14-batch,
+.cl-route-compass,
+.ledger-sticky {
+  overflow-anchor: none;
+}
+
+input,
+textarea,
+select {
+  touch-action: manipulation;
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+button,
+[role="button"],
+.tap,
+.chip,
+.cl-r12-chip,
+.cl-r12-action,
+.cl-r14-action,
+.cl-route-action,
+.nav-item {
+  touch-action: manipulation;
+}
+
+[data-cl-r12-input],
+[data-cl-r14-text],
+[data-cl-r10-input],
+.search-input,
+.pin-search-input,
+.msg-input,
+.input,
+.textarea {
+  -webkit-user-select: text;
+  user-select: text;
+  caret-color: var(--gold);
+}
+
+[data-cl-r12-input]:focus,
+[data-cl-r14-text]:focus,
+[data-cl-r10-input]:focus,
+.search-input:focus,
+.pin-search-input:focus,
+.msg-input:focus,
+.input:focus,
+.textarea:focus,
+select:focus {
+  outline: 2px solid transparent;
+}
+
+@media (max-width: 520px) {
+  [data-cl-r12-input],
+  [data-cl-r14-text],
+  [data-cl-r10-input],
+  .search-input,
+  .pin-search-input,
+  .msg-input,
+  .input,
+  .textarea {
+    font-size: 16px;
+  }
+}

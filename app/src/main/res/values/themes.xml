@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.CoupleSpaceAI" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/rose_pink</item>
+        <item name="android:navigationBarColor">@color/surface</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowBackground">@color/background</item>
+    </style>
+
+    <style name="Theme.CoupleSpaceAI.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/splash_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="postSplashScreenTheme">@style/Theme.CoupleSpaceAI</item>
+    </style>
+</resources>

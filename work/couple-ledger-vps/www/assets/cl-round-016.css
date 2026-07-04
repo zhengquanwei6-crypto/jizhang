@@ -1,0 +1,17 @@
+.cl-quick-dock:not(.is-open) .cl-quick-panel {
+  visibility: hidden;
+}
+
+.cl-quick-dock.is-open .cl-quick-panel {
+  visibility: visible;
+}
+
+.cl-quick-main[aria-expanded="true"] {
+  box-shadow: 0 12px 30px color-mix(in srgb, var(--gold) 34%, transparent);
+}
+
+.sheet-overlay input[aria-label],
+.sheet-overlay select[aria-label],
+.sheet-overlay textarea[aria-label] {
+  min-width: 0;
+}

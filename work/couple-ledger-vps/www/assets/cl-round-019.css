@@ -1,0 +1,126 @@
+.cl-r19-ledger-search {
+  display: grid;
+  gap: 10px;
+  margin: 12px 16px 14px;
+  padding: 12px;
+  border: 1px solid color-mix(in srgb, var(--gold) 26%, var(--border-subtle));
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--surface) 96%, transparent);
+  box-shadow: 0 12px 28px rgba(31, 29, 24, 0.08);
+}
+
+.cl-r19-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.cl-r19-title {
+  margin: 0;
+  color: var(--ink-dark);
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.cl-r19-kicker {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.cl-r19-filter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  padding: 0 10px;
+  border: 1px solid color-mix(in srgb, var(--border-subtle) 72%, transparent);
+  border-radius: 8px;
+  color: var(--ink-mid);
+  background: color-mix(in srgb, var(--surface-variant) 84%, var(--surface));
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.cl-r19-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+}
+
+.cl-r19-input-wrap {
+  position: relative;
+  min-width: 0;
+}
+
+.cl-r19-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  width: 17px;
+  height: 17px;
+  color: var(--ink-muted);
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.cl-r19-input {
+  width: 100%;
+  min-width: 0;
+  height: 44px;
+  padding: 0 12px 0 38px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  color: var(--ink-dark);
+  background: var(--surface);
+  font-size: 15px;
+  line-height: 44px;
+  outline: none;
+}
+
+.cl-r19-input:focus {
+  border-color: color-mix(in srgb, var(--gold) 62%, var(--border-subtle));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 16%, transparent);
+}
+
+.cl-r19-clear {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid color-mix(in srgb, var(--border-subtle) 72%, transparent);
+  border-radius: 8px;
+  color: var(--ink-mid);
+  background: color-mix(in srgb, var(--surface-variant) 82%, var(--surface));
+}
+
+.cl-r19-clear svg {
+  width: 17px;
+  height: 17px;
+}
+
+.cl-r19-status {
+  min-height: 17px;
+  color: var(--ink-muted);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.cl-r19-status.is-active {
+  color: var(--gold);
+  font-weight: 800;
+}
+
+@media (max-width: 430px) {
+  .cl-r19-ledger-search {
+    margin-right: 16px;
+    margin-left: 16px;
+  }
+}

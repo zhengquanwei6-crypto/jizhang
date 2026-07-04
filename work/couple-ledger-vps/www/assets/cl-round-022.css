@@ -1,0 +1,66 @@
+.cl-r22-import-help {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid color-mix(in srgb, #d97706 34%, var(--border-subtle));
+  border-radius: 8px;
+  background: color-mix(in srgb, #f59e0b 10%, var(--surface));
+}
+
+.cl-r22-import-help[hidden] {
+  display: none !important;
+}
+
+.cl-r22-title {
+  margin: 0;
+  color: var(--ink-dark);
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.35;
+}
+
+.cl-r22-desc {
+  margin: 0;
+  color: var(--ink-mid);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.cl-r22-list {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding-left: 18px;
+  color: var(--ink-muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.cl-r22-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cl-r22-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 0 10px;
+  border: 1px solid color-mix(in srgb, var(--border-subtle) 72%, transparent);
+  border-radius: 8px;
+  color: var(--ink-mid);
+  background: var(--surface);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.cl-r22-action.primary {
+  border-color: transparent;
+  color: #fff;
+  background: var(--gold);
+}

@@ -1,0 +1,77 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.cursor/
+.claude/
+
+# Local machine configuration
+local.properties
+*.local
+.env
+.env.*
+!.env.example
+
+# Secrets and keys
+*.pem
+*.key
+*.p12
+*.jks
+id_rsa*
+id_ed25519*
+keystore.properties
+secrets.properties
+
+# Runtime data
+*.db
+*.sqlite
+*.sqlite3
+*.log
+logs/
+tmp/
+temp/
+sync_tmp/
+
+# Node / frontend
+node_modules/
+dist/
+.vite/
+.npm/
+coverage/
+playwright-report/
+test-results/
+.playwright-cli/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Android / Gradle
+.gradle/
+build/
+**/build/
+*.apk
+*.aab
+*.ap_
+*.dex
+
+# Generated local artifacts
+output/
+*.tmp
+*.bak
+*.bak*
+*.backup
+*.backup*
+continue_patch*.py
+core/design.bak.*/
+
+# Keep public static assets and source, but not downloaded dependencies.
+!work/couple-ledger-vps/www/
+!work/couple-ledger-vps/www/**
+!work/couple-ledger-vps/frontend/package-lock.json

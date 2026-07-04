@@ -1,0 +1,302 @@
+:root {
+  --cl-r9-line: color-mix(in srgb, var(--border-subtle) 70%, var(--gold) 30%);
+  --cl-r9-panel: color-mix(in srgb, var(--surface) 96%, transparent);
+  --cl-r9-soft: color-mix(in srgb, var(--surface-variant) 84%, var(--gold) 7%);
+  --cl-r9-blue: #6f93b8;
+  --cl-r9-sage: #6f9a7a;
+}
+
+.cl-backup-panel {
+  display: grid;
+  gap: 12px;
+  margin: 8px 16px 12px;
+  padding: 12px;
+  max-width: calc(100% - 32px);
+  border: 1px solid var(--cl-r9-line);
+  border-radius: 8px;
+  background: var(--cl-r9-panel);
+  box-shadow: 0 10px 24px rgba(31, 29, 24, .07);
+}
+
+.cl-r9-head,
+.cl-r9-metrics,
+.cl-r9-actions,
+.cl-r9-checks {
+  min-width: 0;
+}
+
+.cl-r9-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.cl-r9-copy {
+  min-width: 0;
+}
+
+.cl-r9-copy span {
+  display: block;
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.cl-r9-copy strong {
+  display: block;
+  margin-top: 1px;
+  color: var(--ink-dark);
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+.cl-r9-copy small {
+  display: block;
+  margin-top: 2px;
+  color: var(--ink-muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.cl-r9-status {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 28px;
+  max-width: 132px;
+  padding: 0 9px;
+  border-radius: 999px;
+  color: #fff;
+  background: var(--cl-r9-blue);
+  font-size: 12px;
+  font-weight: 900;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cl-r9-status.is-fresh {
+  background: var(--cl-r9-sage);
+}
+
+.cl-r9-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.cl-r9-metric {
+  min-width: 0;
+  padding: 9px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--surface-variant) 82%, var(--surface));
+}
+
+.cl-r9-metric strong,
+.cl-r9-metric span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cl-r9-metric strong {
+  color: var(--ink-dark);
+  font-size: 15px;
+  line-height: 1.25;
+  font-variant-numeric: tabular-nums;
+}
+
+.cl-r9-metric span {
+  margin-top: 2px;
+  color: var(--ink-muted);
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.cl-r9-checks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.cl-r9-check {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  min-height: 32px;
+  padding: 7px 9px;
+  border-radius: 8px;
+  background: var(--cl-r9-soft);
+  color: var(--ink-mid);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.cl-r9-check i {
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 16px;
+  border-radius: 999px;
+  color: #fff;
+  background: var(--gold);
+  font-style: normal;
+  font-size: 10px;
+  line-height: 1;
+}
+
+.cl-r9-check span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cl-r9-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.cl-r9-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-height: 34px;
+  max-width: 100%;
+  padding: 0 11px;
+  border: 1px solid color-mix(in srgb, var(--border-subtle) 72%, transparent);
+  border-radius: 8px;
+  color: var(--ink-mid);
+  background: color-mix(in srgb, var(--surface-variant) 82%, var(--surface));
+  font: inherit;
+  font-size: 12px;
+  font-weight: 850;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cl-r9-action.primary {
+  border-color: transparent;
+  color: #fff;
+  background: var(--gold);
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--gold) 22%, transparent);
+}
+
+.cl-r9-action svg {
+  width: 13px;
+  height: 13px;
+  flex: 0 0 auto;
+}
+
+.cl-r9-action span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cl-r9-note {
+  margin: -1px 0 0;
+  color: var(--ink-muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.cl-r9-native-tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  margin: 0 0 8px;
+  padding: 0 8px;
+  border-radius: 999px;
+  color: var(--ink-mid);
+  background: color-mix(in srgb, var(--surface-variant) 86%, var(--gold) 9%);
+  font-size: 11px;
+  font-weight: 850;
+}
+
+.card.account-summary.cl-r9-native,
+.card.backup-reminder.cl-r9-native,
+.card.data-tip.cl-r9-native {
+  border-color: color-mix(in srgb, var(--border-hair) 62%, var(--gold) 38%);
+}
+
+.card.backup-reminder.cl-r9-native {
+  background: color-mix(in srgb, var(--surface) 92%, var(--gold) 6%);
+}
+
+.app-shell .page .card.account-summary,
+.app-shell .page .card.backup-reminder,
+.app-shell .page .card.data-tip,
+.app-shell .page .card.menu {
+  width: auto;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.app-shell .page .card.account-summary *,
+.app-shell .page .card.backup-reminder *,
+.app-shell .page .card.data-tip *,
+.app-shell .page .card.menu * {
+  min-width: 0;
+}
+
+.app-shell .page .card.backup-reminder .btn,
+.app-shell .page .card.account-summary .btn,
+.app-shell .page .card.menu .menu-item {
+  max-width: 100%;
+  white-space: normal;
+}
+
+.cl-r9-flash {
+  position: fixed;
+  left: 50%;
+  bottom: calc(88px + env(safe-area-inset-bottom));
+  z-index: 10035;
+  transform: translateX(-50%);
+  max-width: min(360px, calc(100vw - 32px));
+  padding: 10px 13px;
+  border-radius: 999px;
+  color: #fff;
+  background: color-mix(in srgb, var(--ink-dark) 82%, var(--gold) 18%);
+  box-shadow: 0 12px 28px rgba(31, 29, 24, .18);
+  font-size: 13px;
+  font-weight: 850;
+  text-align: center;
+}
+
+.cl-r9-action:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 28%, transparent);
+}
+
+body.cl-modal-surface-open .cl-quick-dock,
+body.cl-modal-surface-open .cl-route-top {
+  display: none !important;
+}
+
+@media (max-width: 430px) {
+  .cl-r9-head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cl-r9-status {
+    align-self: flex-start;
+  }
+
+  .cl-r9-metrics,
+  .cl-r9-checks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

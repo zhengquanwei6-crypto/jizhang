@@ -1,0 +1,204 @@
+:root {
+  --cl-route-panel: color-mix(in srgb, var(--surface) 97%, transparent);
+  --cl-route-line: color-mix(in srgb, var(--border-subtle) 72%, var(--gold) 28%);
+  --cl-route-soft: color-mix(in srgb, var(--gold) 10%, var(--surface-variant));
+}
+
+.cl-route-compass {
+  display: grid;
+  gap: 10px;
+  margin: 8px 16px 12px;
+  padding: 11px;
+  border: 1px solid var(--cl-route-line);
+  border-radius: 8px;
+  background: var(--cl-route-panel);
+  box-shadow: 0 10px 24px rgba(31, 29, 24, .07);
+}
+
+.cl-route-head,
+.cl-route-actions {
+  display: flex;
+  align-items: center;
+}
+
+.cl-route-head {
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.cl-route-copy {
+  min-width: 0;
+}
+
+.cl-route-copy span {
+  display: block;
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.cl-route-copy strong,
+.cl-route-copy small {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cl-route-copy strong {
+  margin-top: 1px;
+  color: var(--ink-dark);
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.cl-route-copy small {
+  margin-top: 2px;
+  color: var(--ink-muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.cl-route-recent,
+.cl-route-action,
+.cl-route-top {
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cl-route-recent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  min-height: 34px;
+  max-width: 132px;
+  padding: 0 11px;
+  border: 1px solid color-mix(in srgb, var(--border-subtle) 70%, transparent);
+  border-radius: 8px;
+  color: var(--ink-mid);
+  background: color-mix(in srgb, var(--surface-variant) 76%, var(--gold) 10%);
+  font-size: 12px;
+  font-weight: 850;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cl-route-actions {
+  min-width: 0;
+  flex-wrap: wrap;
+  gap: 7px;
+  justify-content: flex-start;
+}
+
+.cl-route-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-height: 34px;
+  max-width: 100%;
+  padding: 0 11px;
+  border: 1px solid color-mix(in srgb, var(--border-subtle) 72%, transparent);
+  border-radius: 8px;
+  color: var(--ink-mid);
+  background: color-mix(in srgb, var(--surface-variant) 82%, var(--surface));
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.cl-route-action svg {
+  width: 13px;
+  height: 13px;
+  flex: 0 0 auto;
+}
+
+.cl-route-action span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cl-route-action.primary {
+  border-color: transparent;
+  color: #fff;
+  background: var(--gold);
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--gold) 22%, transparent);
+}
+
+.cl-route-top {
+  position: fixed;
+  left: 16px;
+  bottom: calc(88px + env(safe-area-inset-bottom));
+  z-index: 10020;
+  display: none;
+  align-items: center;
+  gap: 5px;
+  min-height: 36px;
+  padding: 0 11px;
+  border-radius: 999px;
+  color: var(--ink-dark);
+  background: color-mix(in srgb, var(--surface) 92%, var(--gold) 8%);
+  box-shadow: 0 10px 26px rgba(31, 29, 24, .14);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.cl-route-top svg {
+  width: 14px;
+  height: 14px;
+}
+
+.cl-route-top.is-visible {
+  display: inline-flex;
+}
+
+body.cl-tx-sheet-open .cl-route-compass,
+body.cl-tx-sheet-open .cl-route-top {
+  display: none !important;
+}
+
+.cl-route-action:focus-visible,
+.cl-route-recent:focus-visible,
+.cl-route-top:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 28%, transparent);
+}
+
+@media (min-width: 760px) {
+  .cl-route-top {
+    left: calc(50% - 220px);
+  }
+}
+
+@media (max-width: 680px) {
+  .cl-route-compass {
+    margin-right: 16px;
+    margin-left: 16px;
+  }
+
+  .cl-route-head {
+    align-items: flex-start;
+  }
+
+  .cl-route-actions {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 1px;
+    scrollbar-width: none;
+  }
+
+  .cl-route-actions::-webkit-scrollbar {
+    display: none;
+  }
+
+  .cl-route-action {
+    flex: 0 0 auto;
+  }
+}

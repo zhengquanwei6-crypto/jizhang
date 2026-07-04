@@ -1,0 +1,83 @@
+:root {
+  --cl-r24-bottom-action: calc(96px + env(safe-area-inset-bottom));
+  --cl-r24-side-action: max(18px, calc(50vw - 214px));
+}
+
+body.cl-r24-polish .cl-quick-dock {
+  display: none !important;
+}
+
+body.cl-r24-polish .jump-today {
+  right: auto !important;
+  left: var(--cl-r24-side-action) !important;
+  bottom: var(--cl-r24-bottom-action) !important;
+  z-index: 88 !important;
+}
+
+body.cl-r24-polish .fab {
+  right: var(--cl-r24-side-action) !important;
+  bottom: var(--cl-r24-bottom-action) !important;
+}
+
+body.cl-r24-polish .ledger-sticky {
+  max-height: calc(100vh - 176px);
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+body.cl-r24-polish .ledger-sticky::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+body.cl-r24-polish .cl-r24-internal-label {
+  display: none !important;
+}
+
+body.cl-r24-polish .cl-route-copy strong,
+body.cl-r24-polish .cl-ledger-scan-title strong,
+body.cl-r24-polish .cl-r10-title strong,
+body.cl-r24-polish .cl-r11-title strong,
+body.cl-r24-polish .cl-r12-title strong,
+body.cl-r24-polish .cl-r13-head strong,
+body.cl-r24-polish .cl-r14-head strong,
+body.cl-r24-polish .cl-r19-title {
+  margin-top: 0;
+}
+
+body.cl-r24-polish button:focus-visible,
+body.cl-r24-polish a:focus-visible,
+body.cl-r24-polish input:focus-visible,
+body.cl-r24-polish textarea:focus-visible,
+body.cl-r24-polish select:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--gold) 58%, transparent);
+  outline-offset: 2px;
+}
+
+body.cl-r24-polish .tx,
+body.cl-r24-polish .card,
+body.cl-r24-polish .shortcut,
+body.cl-r24-polish .cl-route-compass,
+body.cl-r24-polish .cl-money-ai,
+body.cl-r24-polish .cl-ledger-scan {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 520px) {
+  :root {
+    --cl-r24-bottom-action: calc(94px + env(safe-area-inset-bottom));
+    --cl-r24-side-action: max(18px, env(safe-area-inset-left));
+  }
+
+  body.cl-r24-polish .fab {
+    right: max(18px, env(safe-area-inset-right)) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.cl-r24-polish *,
+  body.cl-r24-polish *::before,
+  body.cl-r24-polish *::after {
+    scroll-behavior: auto !important;
+  }
+}

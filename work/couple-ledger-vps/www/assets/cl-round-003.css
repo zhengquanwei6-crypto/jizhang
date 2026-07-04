@@ -1,0 +1,216 @@
+:root {
+  --cl-form-panel: color-mix(in srgb, var(--surface) 97%, transparent);
+  --cl-form-line: color-mix(in srgb, var(--border-subtle) 78%, var(--gold) 22%);
+}
+
+body.cl-tx-sheet-open {
+  overflow: hidden;
+}
+
+body.cl-tx-sheet-open .nav,
+body.cl-tx-sheet-open .cl-quick-dock,
+body.cl-tx-sheet-open .cl-empty-boost[data-cl-round-002="ledger-empty"] {
+  display: none !important;
+}
+
+body.cl-tx-sheet-open .sheet {
+  max-height: calc(100dvh - 16px) !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+  padding-bottom: calc(92px + env(safe-area-inset-bottom)) !important;
+}
+
+.cl-tx-form-helper {
+  display: grid;
+  gap: 8px;
+  margin: 8px 0 10px;
+  padding: 10px;
+  border: 1px solid var(--cl-form-line);
+  border-radius: 8px;
+  background: var(--cl-form-panel);
+}
+
+.cl-tx-form-helper strong {
+  color: var(--ink-dark);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.cl-tx-form-helper span {
+  color: var(--ink-muted);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.cl-tx-last {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0 10px;
+  padding: 10px;
+  border: 1px solid var(--border-hair);
+  border-radius: 8px;
+  background: var(--surface-variant);
+}
+
+.cl-tx-last.is-visible {
+  display: flex;
+}
+
+.cl-tx-last-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.cl-tx-last-copy strong,
+.cl-tx-last-copy span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cl-tx-last-copy strong {
+  color: var(--ink-dark);
+  font-size: 13px;
+}
+
+.cl-tx-last-copy span {
+  margin-top: 2px;
+  color: var(--ink-muted);
+  font-size: 12px;
+}
+
+.cl-tx-last button,
+.cl-note-chip,
+.cl-tx-assist button {
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cl-tx-last button {
+  min-height: 34px;
+  padding: 0 11px;
+  border-radius: 8px;
+  color: #fff;
+  background: var(--gold);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.cl-note-suggestions {
+  display: flex;
+  gap: 8px;
+  margin: -4px 0 10px;
+  padding-bottom: 2px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.cl-note-suggestions::-webkit-scrollbar {
+  display: none;
+}
+
+.cl-note-chip {
+  flex: 0 0 auto;
+  min-height: 32px;
+  padding: 0 11px;
+  border: 1px solid var(--border-hair);
+  border-radius: 999px;
+  color: var(--ink-mid);
+  background: var(--surface-variant);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.cl-note-chip:focus-visible,
+.cl-tx-last button:focus-visible,
+.cl-tx-assist button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--gold) 28%, transparent);
+}
+
+.cl-tx-assist {
+  position: fixed;
+  left: 50%;
+  bottom: max(12px, env(safe-area-inset-bottom));
+  z-index: 10050;
+  width: min(420px, calc(100vw - 24px));
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid var(--cl-form-line);
+  border-radius: 8px;
+  background: var(--cl-form-panel);
+  box-shadow: 0 16px 44px rgba(13, 13, 13, .18);
+  backdrop-filter: blur(14px);
+}
+
+.cl-tx-assist-text {
+  min-width: 0;
+}
+
+.cl-tx-assist-text strong,
+.cl-tx-assist-text span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cl-tx-assist-text strong {
+  color: var(--ink-dark);
+  font-size: 13px;
+  line-height: 1.25;
+}
+
+.cl-tx-assist-text span {
+  margin-top: 3px;
+  color: var(--ink-muted);
+  font-size: 12px;
+}
+
+.cl-tx-assist button {
+  min-height: 42px;
+  padding: 0 15px;
+  border-radius: 8px;
+  color: #fff;
+  background: var(--gold);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.cl-tx-assist button.is-disabled {
+  opacity: .58;
+}
+
+.cl-tx-assist.cl-needs-input {
+  border-color: color-mix(in srgb, var(--warning) 48%, var(--border-subtle));
+}
+
+.cl-tx-nudge {
+  animation: cl-tx-nudge .28s var(--ease-spring);
+}
+
+@keyframes cl-tx-nudge {
+  0%, 100% { transform: translateX(-50%); }
+  35% { transform: translateX(calc(-50% - 5px)); }
+  70% { transform: translateX(calc(-50% + 5px)); }
+}
+
+@media (min-width: 760px) {
+  .cl-tx-assist {
+    width: 420px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cl-tx-nudge {
+    animation: none;
+  }
+}

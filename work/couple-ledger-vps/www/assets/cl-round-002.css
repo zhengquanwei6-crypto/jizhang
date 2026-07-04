@@ -1,0 +1,303 @@
+:root {
+  --cl-empty-panel: color-mix(in srgb, var(--surface) 97%, transparent);
+  --cl-empty-border: color-mix(in srgb, var(--border-subtle) 76%, var(--gold) 24%);
+  --cl-empty-blue: #5f8fbc;
+  --cl-empty-sage: #6f9a7b;
+  --cl-empty-rose: #c47b67;
+}
+
+.cl-empty-boost {
+  width: 100%;
+  margin: 14px auto 0;
+  padding: 14px;
+  border: 1px solid var(--cl-empty-border);
+  border-radius: 8px;
+  background: var(--cl-empty-panel);
+  box-shadow: 0 10px 30px rgba(13, 13, 13, .07);
+}
+
+.cl-empty-boost.is-compact {
+  margin-top: 10px;
+  padding: 12px;
+}
+
+.cl-empty-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 24px;
+  padding: 0 9px;
+  border-radius: 999px;
+  color: var(--gold-strong);
+  background: color-mix(in srgb, var(--gold) 12%, transparent);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.cl-empty-title {
+  margin: 10px 0 4px;
+  color: var(--ink-dark);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.cl-empty-copy {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.cl-empty-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.cl-empty-action {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 12px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  color: var(--ink-dark);
+  background: var(--surface);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform .16s var(--ease-spring), background .16s, border-color .16s, box-shadow .16s;
+}
+
+.cl-empty-action.primary {
+  border-color: transparent;
+  color: #fff;
+  background: var(--gold);
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--gold) 32%, transparent);
+}
+
+.cl-empty-action:hover,
+.cl-empty-action:focus-visible {
+  border-color: color-mix(in srgb, var(--gold) 45%, var(--border-subtle));
+  background: var(--surface-variant);
+  outline: none;
+}
+
+.cl-empty-action.primary:hover,
+.cl-empty-action.primary:focus-visible {
+  background: var(--gold-strong);
+}
+
+.cl-empty-action:active {
+  transform: scale(.975);
+}
+
+.cl-empty-action svg,
+.cl-empty-kicker svg,
+.cl-empty-tip svg {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+}
+
+.cl-empty-tip {
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  gap: 9px;
+  align-items: start;
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--surface-variant) 70%, transparent);
+  color: var(--ink-mid);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.cl-empty-tip svg {
+  margin-top: 1px;
+  color: var(--gold);
+}
+
+.cl-empty-mini-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.cl-empty-mini {
+  min-width: 0;
+  padding: 10px;
+  border-radius: 8px;
+  background: var(--surface-variant);
+}
+
+.cl-empty-mini strong,
+.cl-empty-mini span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cl-empty-mini strong {
+  color: var(--ink-dark);
+  font-size: 13px;
+}
+
+.cl-empty-mini span {
+  margin-top: 3px;
+  color: var(--ink-muted);
+  font-size: 12px;
+}
+
+.cl-empty-filter-bar {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--gold) 10%, var(--surface));
+  color: var(--ink-mid);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.cl-empty-filter-bar.is-visible {
+  display: flex;
+}
+
+.cl-empty-filter-bar span {
+  flex: 1;
+  min-width: 0;
+}
+
+.cl-empty-filter-bar button {
+  min-height: 32px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  background: var(--gold);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.cl-couple-benefits {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.cl-couple-benefit {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 9px;
+  align-items: start;
+  padding: 10px;
+  border-radius: 8px;
+  background: var(--surface-variant);
+}
+
+.cl-couple-benefit i {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  color: #fff;
+  background: var(--gold);
+  font-style: normal;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.cl-couple-benefit strong {
+  display: block;
+  color: var(--ink-dark);
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.cl-couple-benefit span {
+  display: block;
+  margin-top: 2px;
+  color: var(--ink-muted);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.cl-budget-rescue {
+  max-width: 480px;
+  margin: calc(24px + env(safe-area-inset-top)) auto 0;
+  padding: 0 16px;
+}
+
+@media (max-width: 430px) {
+  .cl-empty-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cl-empty-action.primary {
+    grid-column: 1 / -1;
+  }
+
+  .cl-empty-mini-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cl-empty-filter-bar {
+    align-items: flex-start;
+  }
+
+  .cl-empty-boost[data-cl-round-002="ledger-empty"] {
+    position: fixed;
+    left: 14px;
+    right: 78px;
+    bottom: calc(var(--bottom-nav-offset, 104px) + 12px);
+    z-index: 150;
+    width: auto;
+    max-height: 150px;
+    margin: 0;
+    padding: 10px;
+    overflow: hidden;
+  }
+
+  .cl-empty-boost[data-cl-round-002="ledger-empty"] .cl-empty-copy,
+  .cl-empty-boost[data-cl-round-002="ledger-empty"] .cl-empty-mini-grid,
+  .cl-empty-boost[data-cl-round-002="ledger-empty"] .cl-empty-tip,
+  .cl-empty-boost[data-cl-round-002="ledger-empty"] .cl-empty-action:not(.primary) {
+    display: none;
+  }
+
+  .cl-empty-boost[data-cl-round-002="ledger-empty"] .cl-empty-title {
+    margin: 7px 0 8px;
+    font-size: 14px;
+  }
+
+  .cl-empty-boost[data-cl-round-002="ledger-empty"] .cl-empty-actions {
+    display: block;
+    margin-top: 0;
+  }
+
+  .cl-empty-boost[data-cl-round-002="ledger-empty"] .cl-empty-action.primary {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cl-empty-action {
+    transition: none;
+  }
+}

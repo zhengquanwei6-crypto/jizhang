@@ -1,0 +1,1 @@
+const u=[{value:"none",label:"不分摊"},{value:"aa",label:"AA 平分"},{value:"payer",label:"付款人承担"},{value:"partner",label:"算对方头上"}];function t(a){var e;return((e=u.find(l=>l.value===a))==null?void 0:e.label)||""}function b(a,e,l="用户"){var n;return((n=a.find(r=>r.id===e))==null?void 0:n.nickname)||l}export{u as S,b as m,t as s};

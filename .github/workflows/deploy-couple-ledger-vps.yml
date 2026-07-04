@@ -1,0 +1,123 @@
+name: Deploy Couple Ledger to VPS
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: couple-ledger-vps-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Build, check, and deploy
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    env:
+      APP_ROOT: work/couple-ledger-vps
+      BACKEND_ROOT: work/couple-ledger-vps/backend
+      FRONTEND_ROOT: work/couple-ledger-vps/frontend
+      STATIC_ROOT: work/couple-ledger-vps/www
+      VPS_HOST: ${{ secrets.VPS_HOST }}
+      VPS_USER: ${{ secrets.VPS_USER }}
+      VPS_PORT: ${{ secrets.VPS_PORT || '22' }}
+      VPS_APP_DIR: ${{ secrets.VPS_APP_DIR || '/opt/couple-ledger' }}
+      VPS_WEB_DIR: ${{ secrets.VPS_WEB_DIR || '/var/www/couple-ledger' }}
+      PUBLIC_HEALTH_URL: ${{ secrets.PUBLIC_HEALTH_URL }}
+
+    steps:
+      - name: Check required secrets
+        run: |
+          test -n "$VPS_HOST" || (echo "Missing secret: VPS_HOST" && exit 1)
+          test -n "$VPS_USER" || (echo "Missing secret: VPS_USER" && exit 1)
+          test -n "${{ secrets.VPS_SSH_KEY }}" || (echo "Missing secret: VPS_SSH_KEY" && exit 1)
+          test -n "$PUBLIC_HEALTH_URL" || (echo "Missing secret: PUBLIC_HEALTH_URL" && exit 1)
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: ${{ env.FRONTEND_ROOT }}/package-lock.json
+
+      - name: Install backend dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r "$BACKEND_ROOT/requirements.txt"
+
+      - name: Run backend tests
+        working-directory: ${{ env.BACKEND_ROOT }}
+        run: pytest
+
+      - name: Check static overlays
+        shell: pwsh
+        working-directory: ${{ env.APP_ROOT }}
+        run: ./tools/check-static.ps1
+
+      - name: Build Vue frontend source
+        working-directory: ${{ env.FRONTEND_ROOT }}
+        run: |
+          npm ci
+          npm run build
+
+      - name: Configure SSH
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/couple-ledger-vps
+          chmod 600 ~/.ssh/couple-ledger-vps
+          ssh-keyscan -p "$VPS_PORT" "$VPS_HOST" >> ~/.ssh/known_hosts
+
+      - name: Prepare remote directories and backup current entry
+        run: |
+          ssh -i ~/.ssh/couple-ledger-vps -p "$VPS_PORT" "$VPS_USER@$VPS_HOST" \
+            "mkdir -p '$VPS_APP_DIR' '$VPS_WEB_DIR' '$VPS_WEB_DIR/.round-backups' && \
+             if [ -f '$VPS_WEB_DIR/index.html' ]; then cp '$VPS_WEB_DIR/index.html' '$VPS_WEB_DIR/.round-backups/index.github-actions.$(date +%Y%m%d_%H%M%S).html'; fi"
+
+      - name: Sync backend source
+        run: |
+          rsync -az --delete \
+            -e "ssh -i ~/.ssh/couple-ledger-vps -p $VPS_PORT" \
+            "$BACKEND_ROOT/app" \
+            "$BACKEND_ROOT/tests" \
+            "$BACKEND_ROOT/requirements.txt" \
+            "$BACKEND_ROOT/pytest.ini" \
+            "$BACKEND_ROOT/OPTIMIZATION_ROUNDS.md" \
+            "$VPS_USER@$VPS_HOST:$VPS_APP_DIR/"
+
+      - name: Sync static frontend
+        run: |
+          rsync -az --delete \
+            -e "ssh -i ~/.ssh/couple-ledger-vps -p $VPS_PORT" \
+            "$STATIC_ROOT/" \
+            "$VPS_USER@$VPS_HOST:$VPS_WEB_DIR/"
+
+      - name: Install backend dependencies on VPS and restart service
+        run: |
+          ssh -i ~/.ssh/couple-ledger-vps -p "$VPS_PORT" "$VPS_USER@$VPS_HOST" \
+            "cd '$VPS_APP_DIR' && \
+             python3 -m venv .venv && \
+             . .venv/bin/activate && \
+             pip install --upgrade pip && \
+             pip install -r requirements.txt && \
+             systemctl restart couple-ledger.service && \
+             systemctl is-active couple-ledger.service"
+
+      - name: Verify public health
+        run: |
+          for i in 1 2 3 4 5; do
+            if curl -fsS "$PUBLIC_HEALTH_URL"; then
+              echo "Deployment health check passed"
+              exit 0
+            fi
+            sleep 3
+          done
+          echo "Deployment health check failed"
+          exit 1

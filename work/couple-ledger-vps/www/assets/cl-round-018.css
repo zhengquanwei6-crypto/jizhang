@@ -1,0 +1,68 @@
+.cl-r18-hidden-budget {
+  display: none !important;
+}
+
+.cl-r18-budget {
+  border-color: color-mix(in srgb, var(--gold) 28%, var(--border-subtle));
+}
+
+.cl-r18-budget .cl-r18-sync-note {
+  margin-top: 6px;
+  color: var(--ink-muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.cl-r18-budget .cl-r18-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--cl-viz-good);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.cl-r18-budget .cl-r18-live::before {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: currentColor;
+  content: "";
+}
+
+.cl-r18-budget .cl-r18-ring-empty {
+  display: grid;
+  place-items: center;
+  width: 86px;
+  height: 86px;
+  border: 1px dashed color-mix(in srgb, var(--gold) 44%, var(--border-subtle));
+  border-radius: 999px;
+  color: var(--ink-muted);
+  background: color-mix(in srgb, var(--surface) 84%, var(--surface-variant));
+  font-size: 12px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.cl-r18-budget .cl-r18-loading,
+.cl-r18-budget .cl-r18-error {
+  padding: 10px;
+  border: 1px solid var(--border-hair);
+  border-radius: 8px;
+  color: var(--ink-muted);
+  background: color-mix(in srgb, var(--surface) 90%, var(--surface-variant));
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.cl-r18-budget .cl-r18-error {
+  color: var(--cl-viz-bad);
+}
+
+@media (max-width: 680px) {
+  .cl-r18-budget .cl-r18-ring-empty {
+    justify-self: start;
+    width: 78px;
+    height: 78px;
+  }
+}

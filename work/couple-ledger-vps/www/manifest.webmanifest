@@ -1,0 +1,19 @@
+{
+  "name": "情侣记账 · Couple Ledger",
+  "short_name": "情侣记账",
+  "description": "精致记账，温柔陪伴每一笔收支。支持双人共享账本、实时聊天与智能统计。",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fafaf8",
+  "theme_color": "#c9a962",
+  "lang": "zh-CN",
+  "categories": ["finance", "lifestyle", "productivity"],
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
