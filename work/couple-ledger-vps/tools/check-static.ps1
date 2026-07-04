@@ -40,7 +40,7 @@ if ($failed) {
 
 $assetRefs = New-Object System.Collections.Generic.HashSet[string]
 [regex]::Matches($html, "(?:src|href)=`"/([^`"]+)`"") | ForEach-Object {
-    $ref = $_.Groups[1].Value
+    $ref = ($_.Groups[1].Value -split "[?#]")[0]
     if ($ref.StartsWith("assets/") -or $ref.StartsWith("icons/") -or $ref.StartsWith("models/") -or $ref -eq "favicon.svg" -or $ref -eq "manifest.webmanifest") {
         [void]$assetRefs.Add($ref)
     }

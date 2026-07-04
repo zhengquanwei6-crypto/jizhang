@@ -1520,3 +1520,49 @@ Next candidates:
 - Round 031: check the quick-entry parse/save result states after input stability is confirmed.
 - Round 032: continue page-by-page screenshots for transaction detail drawers, duplicate review, categories, and import/feedback.
 - Round 033: migrate the most stable overlay behavior back into source-owned Vue components.
+
+## Round 031 - Full Page UI and Interaction Sweep
+
+Date: 2026-07-05
+
+Scope:
+- Followed the user's request to check visible, usable problems page by page instead of only checking the five main bottom-nav pages.
+- Expanded the screenshot and interaction audit to 21 routes: login, register, reset password, legal, home, ledger, duplicates, stats, chat, mine, budgets, accounts, categories, couple, pet, savings, archives, recurring, Jelly AI, feedback, and admin.
+- Fixed the homepage quick ledger input focus guard so tapping the one-sentence bookkeeping field does not lose focus during DOM updates or IME composition.
+- Fixed the ledger search input stability issue so consecutive typing keeps the right order and stays focused.
+- Removed the most obvious bottom-right floating-button overlap by hiding redundant floating actions on home, ledger, and recurring pages where inline actions already exist.
+- Reduced homepage clutter by keeping repeated quick tools collapsed and hiding repeated Jelly/utility sections.
+- Added a standalone duplicate-review route for `/duplicates` because the current deployed production bundle does not include that route directly.
+- Fixed a category-page insert error that could break the page enhancement.
+- Fixed admin-page audit mocks so the page no longer crashes during the full-page sweep.
+- Enlarged small mobile tap targets for links, icon buttons, checkboxes, radios, chips, and dense controls.
+- Updated static asset checking so cache-busted query strings are validated correctly.
+
+Files:
+- `work/couple-ledger-vps/www/index.html`
+- `work/couple-ledger-vps/www/assets/cl-round-031.css`
+- `work/couple-ledger-vps/www/assets/cl-round-031.js`
+- `work/couple-ledger-vps/tools/check-static.ps1`
+- `work/couple-ledger-vps/tools/ui-audit.mjs`
+- `work/couple-ledger-vps/ROUND_031_FULL_PAGE_UI_INTERACTION_SWEEP.md`
+
+Verification:
+- `node --check work/couple-ledger-vps/www/assets/cl-round-031.js` passed.
+- `powershell -ExecutionPolicy Bypass -File work/couple-ledger-vps/tools/check-static.ps1` passed.
+- `node work/couple-ledger-vps/tools/ui-audit.mjs` passed across 21 routes.
+- Playwright reported `errors: []`.
+- Playwright reported `interactionFindings: []`.
+- Playwright reported no horizontal overflow on audited mobile pages.
+- Playwright verified direct `/duplicates` rendering.
+- Playwright verified consecutive input works on tested visible text fields, including homepage quick entry and ledger search.
+
+Plain-language summary:
+- 这一轮就是把页面按普通用户的视角重新扫了一遍：能不能看清、能不能点到、能不能输入、点了会不会跳错。
+- 首页最明显的两个问题已经处理：一句话记账输入框不会再一碰就丢焦点，右下角挡住底部导航的悬浮按钮也被收掉。
+- 子页面也不是走过场：查重复账单现在能直接打开，分类页和后台页的明显报错也处理了。
+- 简单说，以前是“功能都摆出来但有点挤，输入框还不听话”；现在是“常用的留下，重复的收起来，输入和跳转更稳”。
+
+Next candidates:
+- Round 032: reduce remaining high-density button clusters on home, ledger, mine, budgets, accounts, and couple pages.
+- Round 033: move stable Round031 overlay behavior into source-owned Vue components.
+- Round 034: run a logged-in transaction add/edit/delete/duplicate-merge flow with screenshots.
