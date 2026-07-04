@@ -1,0 +1,1 @@
+import{v as c,s as u}from"./vendor-CFEvNU3a.js";let o=0;function l(){document.body.style.overflow="hidden",document.body.style.touchAction="none"}function e(){o<=0&&(document.body.style.overflow="",document.body.style.touchAction="")}function i(t){c(t,n=>{n?(o+=1,l()):(o=Math.max(0,o-1),e())},{immediate:!0}),u(()=>{t.value&&(o=Math.max(0,o-1),e())})}export{i as u};

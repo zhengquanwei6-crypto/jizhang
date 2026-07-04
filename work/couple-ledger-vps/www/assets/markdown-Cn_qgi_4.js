@@ -1,0 +1,2 @@
+import{s as p}from"./sanitize-NKX74LMr.js";function a(l){if(!l)return"";let t=String(l).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");t=t.replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>"),t=t.replace(/`([^`]+)`/g,"<code>$1</code>");const i=t.split(`
+`),e=[];let n=!1;for(const r of i){const s=r.match(/^[-*] (.+)$/),o=r.match(/^\d+\. (.+)$/);if(s||o){const c=s?s[1]:o[1];n||(e.push("<ul>"),n=!0),e.push(`<li>${c}</li>`);continue}n&&(e.push("</ul>"),n=!1),r.trim()===""?e.push("<br>"):e.push(`<p>${r}</p>`)}return n&&e.push("</ul>"),p(e.join(""))}export{a as r};

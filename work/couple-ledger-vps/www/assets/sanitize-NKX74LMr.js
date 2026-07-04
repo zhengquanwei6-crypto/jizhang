@@ -1,0 +1,1 @@
+function s(r){return r?r.replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi,"").replace(/\son\w+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi,"").replace(/javascript:/gi,""):""}function e(r){return(r||"").replace(/<[^>]+>/g,"")}export{e as a,s};

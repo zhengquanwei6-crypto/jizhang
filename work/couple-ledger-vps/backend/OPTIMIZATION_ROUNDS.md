@@ -1477,3 +1477,46 @@ Next candidates:
 - Round 030: audit the home quick-entry parse/save flow after the drawer and focus fixes.
 - Round 031: improve ledger amount, type, and date filter chips after the interrupted Round 029 filter work.
 - Round 032: continue visible bug sweeps on accounts and budget pages.
+
+## Round 030 - Reference UI Polish
+
+Date: 2026-07-04
+
+Scope:
+- Followed the user's reference screenshots and continued the visible mobile-page bug sweep.
+- Added `cl-round-030.css` with a rose/coral primary palette, lighter white cards, tighter spacing, refined bottom navigation, and safer floating action placement.
+- Added `cl-round-030.js` to repair route titles/meta copy, add bottom navigation on secondary pages, enhance the login/register switcher, and reinforce mobile input focus.
+- Kept the existing Round 023 homepage drawer behavior while restyling it to match the new visual system.
+- Hid redundant floating action buttons on secondary pages where inline actions already exist, reducing content overlap.
+- Updated the static checker so it validates actual referenced round assets and lazy-loaded Vite chunks.
+- Added `tools/ui-audit.mjs` for repeatable mobile screenshot QA across login, home, ledger, budgets, accounts, couple, savings, and Jelly AI.
+
+Files:
+- `work/couple-ledger-vps/www/index.html`
+- `work/couple-ledger-vps/www/assets/cl-round-030.css`
+- `work/couple-ledger-vps/www/assets/cl-round-030.js`
+- `work/couple-ledger-vps/www/assets/cl-interaction-hotfix.css`
+- `work/couple-ledger-vps/www/assets/cl-interaction-hotfix.js`
+- `work/couple-ledger-vps/tools/check-static.ps1`
+- `work/couple-ledger-vps/tools/ui-audit.mjs`
+- `work/couple-ledger-vps/ROUND_030_REFERENCE_UI_POLISH.md`
+- `.gitignore`
+
+Verification:
+- Local static syntax/reference check passed for `cl-round-001` through `cl-round-024`, `cl-round-030`, `cl-interaction-hotfix.js`, and 125 static/lazy-loaded asset references.
+- Playwright mobile screenshot audit passed for `/login`, `/home`, `/ledger`, `/budgets`, `/accounts`, `/couple`, `/savings`, and `/jelly`.
+- Playwright reported no horizontal overflow on all audited pages.
+- Playwright verified the homepage one-line ledger input remained focused after click and accepted `午餐28`.
+- The only local console errors were expected WebSocket 404s from the static-only test server; production has the backend WebSocket route.
+
+Plain-language summary:
+- 这一轮修的是“页面看起来拥挤、颜色不统一、二级页底部导航缺失、右下角按钮挡内容、首页一句话记账输入不够稳”的问题。
+- 现在整体颜色更接近参考图，主按钮和选中状态统一成粉橙色，卡片更轻，底部导航更稳定。
+- 登录页增加了更明显的登录/注册切换；账户、预算、存钱、情侣空间、Jelly AI 等页面不会再被多余的右下角加号挡住。
+- 最关键的是，脚本专门点了首页顶部“一句话记账”输入框，确认它能保持焦点并输入 `午餐28`。
+- 简单说：以前像每个页面各修各的，有些地方还挡手；现在整体更像一个统一产品，输入框也更听话。
+
+Next candidates:
+- Round 031: check the quick-entry parse/save result states after input stability is confirmed.
+- Round 032: continue page-by-page screenshots for transaction detail drawers, duplicate review, categories, and import/feedback.
+- Round 033: migrate the most stable overlay behavior back into source-owned Vue components.

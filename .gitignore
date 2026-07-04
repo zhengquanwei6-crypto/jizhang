@@ -70,6 +70,8 @@ output/
 *.backup*
 continue_patch*.py
 core/design.bak.*/
+static-server.pid
+work/couple-ledger-vps/.ui-audit/
 
 # Keep public static assets and source, but not downloaded dependencies.
 !work/couple-ledger-vps/www/

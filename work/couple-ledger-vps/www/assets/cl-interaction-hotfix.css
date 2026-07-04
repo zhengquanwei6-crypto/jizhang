@@ -1,0 +1,39 @@
+html,
+body {
+  height: auto;
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  overscroll-behavior-y: none;
+}
+
+input,
+select,
+textarea {
+  font-size: 16px;
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+textarea,
+.sheet,
+.modal,
+.page {
+  -webkit-overflow-scrolling: touch;
+}
+
+.app-shell {
+  height: auto !important;
+  min-height: 100dvh;
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
+}
+
+.page {
+  height: auto !important;
+  overflow: visible !important;
+}
