@@ -1566,3 +1566,47 @@ Next candidates:
 - Round 032: reduce remaining high-density button clusters on home, ledger, mine, budgets, accounts, and couple pages.
 - Round 033: move stable Round031 overlay behavior into source-owned Vue components.
 - Round 034: run a logged-in transaction add/edit/delete/duplicate-merge flow with screenshots.
+
+## Round 032 - Density Drawer Sweep
+
+Date: 2026-07-05
+
+Scope:
+- Continued the full-page UI/interaction objective after Round031 cleared the major input and routing failures.
+- Targeted the remaining full-page audit findings where visible button counts were still too high.
+- Added compact drawers for low-frequency or repeated page areas instead of deleting the underlying features.
+- Collapsed homepage monthly overview, quick shortcuts, recent bills, monthly insight, and split summary by default.
+- Collapsed ledger secondary tools and hid repeated row actions so transaction rows are easier to scan.
+- Collapsed Stats/Budgets AI planning panels so core money numbers stay first.
+- Collapsed large Mine/Profile sections: quick shortcuts, backup, import recognition, reminders, data/settings, theme, and account actions.
+- Collapsed Accounts, Couple Space, Recurring, and Jelly secondary tool areas where they duplicated bottom navigation or page-specific controls.
+- Persisted drawer expansion state in localStorage so a user can choose to keep sections open.
+
+Files:
+- `work/couple-ledger-vps/www/index.html`
+- `work/couple-ledger-vps/www/assets/cl-round-032.css`
+- `work/couple-ledger-vps/www/assets/cl-round-032.js`
+- `work/couple-ledger-vps/ROUND_032_DENSITY_DRAWER_SWEEP.md`
+- `work/couple-ledger-vps/backend/OPTIMIZATION_ROUNDS.md`
+
+Verification:
+- `node --check work/couple-ledger-vps/www/assets/cl-round-032.js` passed.
+- `powershell -ExecutionPolicy Bypass -File work/couple-ledger-vps/tools/check-static.ps1` passed.
+- `node work/couple-ledger-vps/tools/ui-audit.mjs` passed across 21 routes.
+- Playwright reported `uiFindings: []`.
+- Playwright reported `interactionFindings: []`.
+- Playwright reported `errors: []`.
+- Playwright reported no horizontal overflow on the audited mobile pages.
+- Homepage quick ledger input still kept focus and accepted consecutive typing after the drawer changes.
+
+Plain-language summary:
+- 这一轮修的是“页面太满、按钮太多、用户一打开不知道先看哪里”的问题。
+- 功能没有删掉，只是把不常用、重复、说明性的内容收进“展开”抽屉。
+- 首页现在先看一句话记账、结余、目标和洞察；本月概览、快捷入口、最近账单、情侣分摊需要时再展开。
+- 我的页现在不再一屏塞满导入、备份、提醒、主题和账号操作，默认先看账号和常用管理入口。
+- 简单说：以前像所有抽屉都打开着，桌面很乱；现在先把抽屉关上，只把常用东西放在手边，需要哪个再打开哪个。
+
+Next candidates:
+- Round 033: run a logged-in transaction add/edit/delete/duplicate-review flow with screenshots.
+- Round 034: move stable Round031/Round032 overlay behavior into source-owned Vue components.
+- Round 035: check mobile keyboard-open layouts for bottom-nav and input overlap.
