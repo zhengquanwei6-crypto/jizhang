@@ -41,7 +41,8 @@
 - Collapsed AI planning panels on stats and budgets so core numbers appear first.
 - Collapsed multiple Profile/Mine sections: quick shortcuts, backup, import, reminders, data/settings, appearance/account actions.
 - Collapsed account, budget, couple-space, recurring, and Jelly secondary tool areas.
-- Updated `index.html` to load Round032 assets with cache-busting version `20260705-r32b`.
+- Updated `index.html` to load Round032 assets with cache-busting version `20260705-r32d`.
+- Added an extra caret guard for the homepage one-sentence ledger input so repeated single-character typing appends in the right order.
 
 ## Verification
 

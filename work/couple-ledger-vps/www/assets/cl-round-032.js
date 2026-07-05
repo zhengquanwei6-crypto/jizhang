@@ -5,6 +5,7 @@
   var ROUTE_PREFIX = "cl-r32-route-";
   var COLLAPSED = "cl-r32-collapsed";
   var ENHANCED = "data-cl-r32-enhanced";
+  var composing = false;
 
   function routeName() {
     var path = location.pathname === "/" ? "/home" : location.pathname;
@@ -22,6 +23,40 @@
   function isEditable(node) {
     if (!node || !node.matches) return false;
     return node.matches("input, textarea, select, [contenteditable='true']");
+  }
+
+  function isQuickLedgerInput(node) {
+    return !!node && node.matches && node.matches("[data-cl-r12-input]");
+  }
+
+  function keepCaretAtEnd(input) {
+    if (!isQuickLedgerInput(input) || composing) return;
+    window.setTimeout(function () {
+      try {
+        var end = input.value.length;
+        input.setSelectionRange(end, end);
+      } catch (_) {}
+    }, 0);
+  }
+
+  function installQuickCaretGuard() {
+    if (document.__clR32QuickCaretGuard) return;
+    document.__clR32QuickCaretGuard = true;
+    document.addEventListener("compositionstart", function (event) {
+      if (isQuickLedgerInput(event.target)) composing = true;
+    }, true);
+    document.addEventListener("compositionend", function (event) {
+      if (isQuickLedgerInput(event.target)) {
+        composing = false;
+        keepCaretAtEnd(event.target);
+      }
+    }, true);
+    document.addEventListener("focusin", function (event) { keepCaretAtEnd(event.target); }, true);
+    document.addEventListener("click", function (event) { keepCaretAtEnd(event.target); }, true);
+    document.addEventListener("keydown", function (event) {
+      if (event.key && event.key.length === 1) keepCaretAtEnd(event.target);
+    }, true);
+    document.addEventListener("input", function (event) { keepCaretAtEnd(event.target); }, true);
   }
 
   function setRouteClasses() {
@@ -175,7 +210,7 @@
     collapseByText(["钱小参", "一句话指令", "生成计划"], "展开钱小参", "AI 计划需要时再打开");
     collapseByText(["情侣分摊结算", "待结算"], "展开分摊结算", "本月双方应收应付");
     Array.prototype.forEach.call(document.querySelectorAll("button"), function (button) {
-      if (["复制摘要", "保存"].indexOf(textOf(button)) !== -1) {
+      if (["复制摘要", "保存", "看明细"].indexOf(textOf(button)) !== -1) {
         setActionClass(button, "cl-r32-secondary-action");
       }
     });
@@ -256,6 +291,7 @@
 
   function apply() {
     if (!document.body) return;
+    installQuickCaretGuard();
     if (isEditable(document.activeElement)) return;
     document.body.classList.add(BODY_CLASS);
     setRouteClasses();

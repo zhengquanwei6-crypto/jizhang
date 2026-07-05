@@ -1581,6 +1581,8 @@ Scope:
 - Collapsed large Mine/Profile sections: quick shortcuts, backup, import recognition, reminders, data/settings, theme, and account actions.
 - Collapsed Accounts, Couple Space, Recurring, and Jelly secondary tool areas where they duplicated bottom navigation or page-specific controls.
 - Persisted drawer expansion state in localStorage so a user can choose to keep sections open.
+- Tightened the production stats page by hiding the secondary `看明细` action after the public audit showed one extra visible button there.
+- Added an extra homepage quick-ledger caret guard after a repeat audit caught an intermittent `ab` to `ba` typing-order issue.
 
 Files:
 - `work/couple-ledger-vps/www/index.html`
