@@ -71,14 +71,16 @@ body.cl-r32-density .cl-r32-secondary-action {
 body.cl-r32-density.cl-r32-ledger-row-actions-open .cl-r32-ledger-row-action,
 body.cl-r32-density.cl-r32-budget-actions-open .cl-r32-budget-row-action,
 body.cl-r32-density.cl-r32-account-actions-open .cl-r32-account-row-action,
-body.cl-r32-density.cl-r32-couple-actions-open .cl-r32-couple-row-action {
+body.cl-r32-density.cl-r32-couple-actions-open .cl-r32-couple-row-action,
+body.cl-r32-density.cl-r32-stats-period-open .cl-r32-stats-period-action {
   display: inline-grid !important;
 }
 
 body.cl-r32-density .cl-r32-ledger-row-action,
 body.cl-r32-density .cl-r32-budget-row-action,
 body.cl-r32-density .cl-r32-account-row-action,
-body.cl-r32-density .cl-r32-couple-row-action {
+body.cl-r32-density .cl-r32-couple-row-action,
+body.cl-r32-density .cl-r32-stats-period-action {
   display: none !important;
 }
 

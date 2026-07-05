@@ -1577,11 +1577,11 @@ Scope:
 - Added compact drawers for low-frequency or repeated page areas instead of deleting the underlying features.
 - Collapsed homepage monthly overview, quick shortcuts, recent bills, monthly insight, and split summary by default.
 - Collapsed ledger secondary tools and hid repeated row actions so transaction rows are easier to scan.
-- Collapsed Stats/Budgets AI planning panels so core money numbers stay first.
+- Collapsed Stats/Budgets AI planning panels and the Stats period switcher so core money numbers stay first.
 - Collapsed large Mine/Profile sections: quick shortcuts, backup, import recognition, reminders, data/settings, theme, and account actions.
 - Collapsed Accounts, Couple Space, Recurring, and Jelly secondary tool areas where they duplicated bottom navigation or page-specific controls.
 - Persisted drawer expansion state in localStorage so a user can choose to keep sections open.
-- Tightened the production stats page by hiding the secondary `看明细` action after the public audit showed one extra visible button there.
+- Tightened the production stats page by moving the `周/月/季/年` period switcher behind an explicit drawer after the public audit showed one extra visible button there.
 - Added an extra homepage quick-ledger caret guard after a repeat audit caught an intermittent `ab` to `ba` typing-order issue.
 
 Files:

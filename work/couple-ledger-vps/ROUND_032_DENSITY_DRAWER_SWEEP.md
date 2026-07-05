@@ -12,7 +12,7 @@
 4. 账本页账单行右侧重复出现“复记/编辑”等次要按钮。
 5. 账本页账本罗盘、账本扫描和行内操作互相抢注意力。
 6. 统计页钱小参 AI 计划默认展开，和统计主数据抢空间。
-7. 统计页复制/保存类按钮偏多，影响快速阅读。
+7. 统计页周期切换、复制/保存类按钮偏多，影响快速阅读。
 8. 我的页“我的罗盘”默认展开，和记录管理入口重复。
 9. 我的页数据备份台默认展开，信息量过大。
 10. 我的页 CSV/XLSX 导入识别区默认展开，占用较长空间。
@@ -38,10 +38,10 @@
 - Added persistent per-section drawer state with `localStorage`, so users展开后下次仍然记得选择。
 - Collapsed homepage monthly overview, quick shortcuts, recent bills, monthly insight, and split summary.
 - Collapsed ledger compass/scan areas and hid repetitive row actions by default.
-- Collapsed AI planning panels on stats and budgets so core numbers appear first.
+- Collapsed AI planning panels and the stats period switcher so core numbers appear first.
 - Collapsed multiple Profile/Mine sections: quick shortcuts, backup, import, reminders, data/settings, appearance/account actions.
 - Collapsed account, budget, couple-space, recurring, and Jelly secondary tool areas.
-- Updated `index.html` to load Round032 assets with cache-busting version `20260705-r32d`.
+- Updated `index.html` to load Round032 assets with cache-busting version `20260705-r32e`.
 - Added an extra caret guard for the homepage one-sentence ledger input so repeated single-character typing appends in the right order.
 
 ## Verification

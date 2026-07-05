@@ -210,10 +210,18 @@
     collapseByText(["钱小参", "一句话指令", "生成计划"], "展开钱小参", "AI 计划需要时再打开");
     collapseByText(["情侣分摊结算", "待结算"], "展开分摊结算", "本月双方应收应付");
     Array.prototype.forEach.call(document.querySelectorAll("button"), function (button) {
-      if (["复制摘要", "保存", "看明细"].indexOf(textOf(button)) !== -1) {
+      var text = textOf(button);
+      if (["复制摘要", "保存", "看明细"].indexOf(text) !== -1) {
         setActionClass(button, "cl-r32-secondary-action");
       }
+      if (/^(周|月|季|年)$/.test(text)) {
+        setActionClass(button, "cl-r32-stats-period-action");
+      }
     });
+    var periodAnchor = Array.prototype.slice.call(document.querySelectorAll("button")).find(function (button) {
+      return /^(周|月|季|年)$/.test(textOf(button));
+    });
+    addBodyToggle("cl-r32-stats-period-open", "显示统计周期切换", "周/月/季/年默认收起", periodAnchor && periodAnchor.parentElement);
   }
 
   function compactMine() {
